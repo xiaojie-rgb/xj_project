@@ -1,0 +1,320 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+}
+
+/* 新增链接样式重置 */
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+body {
+    background: #f5f7fa;
+}
+
+/* 导航栏 */
+.navbar {
+    background: #2C3E50;
+    padding: 1rem 5%;
+    color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.nav-login {
+    color: white;
+}
+
+/* 下拉框样式 */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown .nav-span {
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown .nav-span:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    right: 0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* 功能入口 */
+.hero-section {
+    padding: 4rem 5%;
+    background: linear-gradient(135deg, #3498db, #2c3e50);
+    color: white;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.quick-access {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 3rem auto 0;
+}
+
+.access-card {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.access-card:hover {
+    transform: translateY(-5px);
+}
+
+.access-card i {
+    margin-bottom: 1rem;
+}
+
+/* 搜索区域 */
+.search-container {
+    max-width: 1200px;
+    margin: -4rem auto 4rem;
+    padding: 0 1rem;
+}
+
+.search-grid {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.search-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.search-input {
+    padding: 1rem;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.search-button {
+    background: #e74c3c;
+    color: white;
+    padding: 1.2rem 2.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: block;
+    margin: 2rem auto 0;
+    transition: background 0.3s;
+}
+
+.search-button:hover {
+    background: #c0392b;
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+    .quick-access,
+    .search-container {
+        max-width: 100%;
+        padding: 0 2rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .quick-access {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        max-width: 600px;
+    }
+
+    .search-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .search-grid {
+        padding: 1.5rem;
+    }
+
+    .search-button {
+        width: 100%;
+        margin-top: 1rem;
+    }
+}
+
+/* 消息提示容器 - 改进后 */
+.alert-container {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 600px;
+    z-index: 1000;
+    perspective: 1000px; /* 增加3D透视效果 */
+}
+
+/* 消息框动画效果 */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) rotateX(30deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+    }
+}
+
+/* 基础消息框样式 - 增强设计 */
+.alert {
+    position: relative;
+    padding: 1.25rem 4rem 1.25rem 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    animation: slideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    backdrop-filter: blur(4px); /* 毛玻璃效果 */
+    border: none;
+}
+
+/* 消息类型颜色方案 - 提高对比度 */
+.alert-success {
+    background: linear-gradient(135deg, #34d058 0%, #28a745 100%);
+    color: #fff;
+}
+
+.alert-danger {
+    background: linear-gradient(135deg, #ff6b6b 0%, #dc3545 100%);
+    color: #fff;
+}
+
+.alert-info {
+    background: linear-gradient(135deg, #4dabf7 0%, #228be6 100%);
+    color: #fff;
+}
+
+.alert-warning {
+    background: linear-gradient(135deg, #ffd43b 0%, #fcc419 100%);
+    color: #2c3e50;
+}
+
+/* 关闭按钮 - 现代化设计 */
+.btn-close {
+    position: absolute;
+    right: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: inherit;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-close:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* 消息图标 - 增强可视性 */
+.alert::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-right: 1rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.alert-success::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+}
+
+.alert-danger::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z'/%3E%3C/svg%3E");
+}
+
+.alert-info::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z'/%3E%3C/svg%3E");
+}
+
+.alert-warning::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232c3e50'%3E%3Cpath d='M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z'/%3E%3C/svg%3E");
+}

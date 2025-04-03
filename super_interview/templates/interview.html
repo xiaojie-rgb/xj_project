@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI模拟面试 - 超级面试官</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/interview.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome-free-6.4.0-web/css/all.min.css') }}">
+    <script src="{{ url_for('static', filename='js/interview.js') }}"></script>
+</head>
+<body>
+<!-- 导航栏 -->
+<nav class="navbar">
+    <div class="nav-title">超级面试官</div>
+    <div class="nav-links">
+        <a href="/">返回首页</a>
+    </div>
+</nav>
+
+<div class="interview-container">
+    <h1>AI模拟面试准备</h1>
+    <form action="/interview" method="post">
+        <div class="preparation-section">
+            <!-- 简历上传 -->
+            <div class="upload-section">
+                <h2>📁 上传简历</h2>
+                <div class="upload-box" onclick="document.getElementById('resume-input').click()">
+                    <i class="fas fa-file-upload fa-3x" style="color: #3498db;"></i>
+                    <p>点击上传或拖放文件（PDF/DOCX）</p>
+                    <small>最大文件大小：10MB</small>
+                </div>
+                <input name="resume" type="file" id="resume-input" hidden accept=".pdf,.doc,.docx">
+                <div id="file-info"></div>
+            </div>
+
+            <!-- 面试设置 -->
+            <div class="settings-section">
+                <h2>⚙️ 面试设置</h2>
+                <div class="setting-item">
+                    <label>选择面试类型：</label>
+                    <select id="interview-type" name="type">
+                        <option value="技术面试">技术面试</option>
+                        <option value="HP面试">HR面试</option>
+                        <option value="高管面试">高管面试</option>
+                    </select>
+                </div>
+                <div class="setting-item" >
+                    <label>选择岗位方向：</label>
+                    <select id="job-field" name="job">
+                        <option value="前端开发">前端开发</option>
+                        <option value="后端开发">后端开发</option>
+                        <option value="数据分析">数据分析</option>
+                        <option value="产品经理">产品经理</option>
+                    </select>
+                </div>
+                <div class="setting-item">
+                    <label>选择难度等级：</label>
+                    <select id="difficulty" name="difficulty">
+                        <option value="初级">初级</option>
+                        <option value="中级">中级</option>
+                        <option value="高级">高级</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="loader" id="loader"></div>
+
+        <button class="start-button" id="start-btn" type="button" disabled>
+            🚀 开始模拟面试
+        </button>
+    </form>
+</div>
+
+</body>
+</html>

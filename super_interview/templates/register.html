@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册 - 超级面试官</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/regisiter.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome-free-6.4.0-web/css/all.min.css') }}">
+</head>
+<body>
+<!-- 导航栏 -->
+<nav class="navbar">
+    <div class="nav-title">超级面试官</div>
+</nav>
+
+<!-- 注册表单 -->
+<div class="auth-container">
+    <div class="auth-card">
+        <h1 class="auth-title">创建账户</h1>
+
+        <div class="alert-container">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                <span>{{ message }}</span>
+                <button type="button" class="btn-close" onclick="this.parentElement.remove()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
+
+        <form action="/register" method="post">
+            <input type="text" name="name" class="auth-input" placeholder="👤 姓名" required>
+            <input type="email" name="email" class="auth-input" placeholder="📧 电子邮箱" required>
+            <input type="password" name="password" class="auth-input" placeholder="🔒 密码" required>
+            <input type="password" name="confirmPassword" class="auth-input" placeholder="🔒 确认密码" required>
+
+            <div class="terms-text">
+                点击"注册"即表示您同意我们的
+                <a href="/terms" class="auth-link">服务条款</a>和
+                <a href="/privacy" class="auth-link">隐私政策</a>
+            </div>
+
+            <button type="submit" class="auth-button">注册</button>
+        </form>
+
+        <p>
+            已有账户? <a href="/login" class="auth-link">立即登录</a>
+        </p>
+    </div>
+</div>
+
+</body>
+</html>

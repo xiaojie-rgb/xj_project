@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简历上传 - 超级面试官</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/resume_analysis.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome-free-6.4.0-web/css/all.min.css') }}">
+    <script src="{{ url_for('static', filename='js/resume_analysis.js') }}"></script>
+</head>
+<body>
+<!-- 导航栏 -->
+<nav class="navbar">
+    <div class="nav-title">超级面试官</div>
+    <div>
+        <a href="/" style="color: white;">返回首页</a>
+    </div>
+</nav>
+
+<!-- 上传区域 -->
+<div class="upload-container">
+    <form action="/resume_results" method="POST" enctype="multipart/form-data">
+    <div class="upload-panel">
+        <h1>简历智能解析</h1>
+
+        <!-- 新增岗位输入 -->
+        <div class="position-input">
+            <label for="target-position">目标岗位：</label>
+            <input name="target_position" type="text" id="target-position" placeholder="例如：前端开发工程师" required>
+        </div>
+
+        <p class="file-requirements">支持格式：PDF/DOCX | 最大文件大小：10MB</p>
+
+        <label for="file-input">
+            <div class="upload-zone">
+                <i class="fas fa-file-upload upload-icon"></i>
+                <h3>拖放文件到此处或点击上传</h3>
+                <p>系统将自动解析简历内容</p>
+            </div>
+        </label>
+        <input name='resume' type="file" id="file-input" accept=".pdf,.doc,.docx">
+
+        <div id="upload-status"></div>
+        <div class="loader" id="loader"></div>
+
+       <button type="submit" class="upload-button" id="analyze-btn" disabled>
+            开始分析
+        </button>
+    </div>
+        </form>
+</div>
+
+</body>
+</html>

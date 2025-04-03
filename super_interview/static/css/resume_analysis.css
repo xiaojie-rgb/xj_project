@@ -1,0 +1,159 @@
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+}
+
+body {
+    background: #f5f7fa;
+    min-height: 100vh;
+}
+
+/* 导航栏 */
+.navbar {
+    background: #2C3E50;
+    padding: 1rem 5%;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+/* 上传容器 */
+.upload-container {
+    max-width: 800px;
+    margin: 3rem auto;
+    padding: 2rem;
+}
+
+/* 上传面板 */
+.upload-panel {
+    background: white;
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* 岗位输入 */
+.position-input {
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.position-input input {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    transition: border-color 0.3s;
+}
+
+.position-input input:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+.upload-zone {
+    border: 3px dashed #3498db;
+    border-radius: 15px;
+    padding: 3rem;
+    margin: 1.5rem 0;
+    transition: all 0.3s;
+    cursor: pointer;
+    background: #f8f9fa;
+}
+
+.upload-zone:hover {
+    border-color: #2980b9;
+    background: rgba(52, 152, 219, 0.05);
+}
+
+.upload-icon {
+    font-size: 4rem;
+    color: #3498db;
+    margin-bottom: 1.5rem;
+}
+
+.file-requirements {
+    color: #7f8c8d;
+    margin-top: 1.5rem;
+}
+
+#file-input {
+    display: none;
+}
+
+.upload-button {
+    background: #3498db;
+    color: white;
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 300px;
+}
+
+.upload-button:hover {
+    background: #2980b9;
+    transform: scale(1.05);
+}
+
+.upload-button:disabled {
+    background: #95a5a6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* 加载动画 */
+.loader {
+    display: none;
+    margin: 2rem auto;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .upload-container {
+        padding: 1rem;
+    }
+
+    .upload-zone {
+        padding: 2rem;
+    }
+
+    .upload-button {
+        max-width: 100%;
+    }
+}

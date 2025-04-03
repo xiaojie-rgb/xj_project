@@ -1,0 +1,249 @@
+/* 导航栏 */
+.navbar {
+    background: #2C3E50;
+    padding: 1rem 5%;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed; /* 新增的定位属性 */
+    top: 0; /* 新增的定位属性 */
+    width: 100%; /* 新增的宽度属性 */
+    z-index: 1000; /* 新增的层级属性 */
+}
+
+
+.nav-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+
+.auth-container {
+    max-width: 500px;
+    margin: 6rem auto;
+    padding: 0 1rem;
+}
+
+.auth-card {
+    background: white;
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.auth-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #2C3E50;
+}
+
+.auth-input {
+    padding: 1rem;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    width: 100%;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.auth-button {
+    background: #3498db;
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s;
+    margin-bottom: 1.5rem;
+}
+
+.auth-button:hover {
+    background: #2980b9;
+}
+
+.auth-link {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.auth-link:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+.auth-divider {
+    margin: 2rem 0;
+    border-top: 1px solid #eee;
+    position: relative;
+}
+
+.auth-divider-text {
+    position: absolute;
+    top: -0.8rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 0 1rem;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+a {
+    text-decoration: None;
+}
+
+
+/* 消息提示容器 */
+.alert-container {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 500px;
+    z-index: 1000;
+}
+
+/* 消息基本样式 */
+.alert {
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: slideIn 0.3s ease-out;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 消息类型颜色 */
+.alert-success {
+    background: #d4edda;
+    border: 2px solid #c3e6cb;
+    color: #155724;
+}
+
+.alert-danger {
+    background: #f8d7da;
+    border: 2px solid #f5c6cb;
+    color: #721c24;
+}
+
+/* 关闭按钮 */
+.btn-close {
+    background: none;
+    border: none;
+    color: inherit;
+    margin-left: 1rem;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.btn-close:hover {
+    opacity: 1;
+}
+
+/* 动画效果 */
+@keyframes slideIn {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .alert-container {
+        width: 95%;
+        bottom: 10px;
+    }
+
+    .alert {
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* 调整原有容器位置 */
+.auth-container {
+    margin: 7rem auto 2rem; /* 增加顶部间距避免被导航栏遮挡 */
+    padding: 0 1rem;
+}
+
+/* 新增加载动画样式 */
+/* 优化后的加载动画样式 */
+#loadingOverlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.85); /* 调浅背景透明度 */
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 1.2rem;
+    color: #4a5568; /* 更柔和的文字颜色 */
+    backdrop-filter: blur(2px); /* 添加毛玻璃效果 */
+}
+
+.loading-spinner {
+    border: 4px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 4px solid #63b3ed; /* 更柔和的蓝色 */
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 16px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* 修正原有样式 */
+.navbar {
+    background: #2C3E50;
+    padding: 1rem 5%;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.auth-container {
+    margin: 7rem auto 2rem;
+    padding: 0 1rem;
+    max-width: 500px;
+}
+
+.alert-container {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 500px;
+    z-index: 1000;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI模拟面试 - 超级面试官</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/interview_question.css') }}">
+    <script>
+        // 调试输出
+        console.log('收到问题列表:', {{ question_list | tojson }});
+
+        // 确保接收到数组格式
+        const question_list = {{ question_list | tojson | safe }};
+
+        // 初始化验证
+        if (question_list.length === 0) {
+            alert('未获取到面试问题，请重新开始面试');
+            window.location.href = '/interview';
+        }
+    </script>
+</head>
+<body>
+<!-- 导航栏 -->
+<nav class="navbar">
+    <div class="nav-title">超级面试官</div>
+    <div>
+        <a href="/interview" style="color: white; text-decoration: none; font-weight: 500;">返回上一级</a>
+        &emsp; &emsp; &emsp;
+        <a href="/" style="color: white; text-decoration: none; font-weight: 500;">返回首页</a>
+    </div>
+</nav>
+
+<div class="interview-container">
+    <div id="interviewPanel">
+        <div class="question-card">
+            <div class="question-header">
+                <h3>第 <span id="currentQuestion">1</span>/<span id="totalQuestions">0</span> 题</h3>
+                <div class="question-progress">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+            </div>
+
+            <div class="question-content" id="questionContent">
+                <!-- 题目内容由JavaScript动态加载 -->
+            </div>
+
+            <textarea
+                    class="answer-area"
+                    placeholder="请在此输入您的回答（建议200-500字）..."
+                    id="userAnswer"></textarea>
+
+            <div class="control-buttons">
+                <button class="btn btn-secondary" onclick="prevQuestion()" id="prevBtn" disabled>上一题</button>
+                <span id="timer">剩余时间：04:59</span>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn">下一题</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="loadingOverlay" class="loading-overlay">
+    <div class="loading-spinner"></div>
+    <p>正在分析中，请稍候...</p>
+</div>
+<script src="{{ url_for('static', filename='js/interview_question.js')}}"></script>
+</body>
+</html>

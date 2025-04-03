@@ -1,0 +1,253 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+}
+
+body {
+    background: #f8fafc;
+    line-height: 1.6;
+}
+
+/* 导航栏 */
+.navbar {
+    background: #2C3E50;
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav-title {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.nav-links a {
+    color: #ECF0F1;
+    text-decoration: none;
+    margin-left: 2rem;
+    transition: opacity 0.3s;
+}
+
+.nav-links a:hover {
+    opacity: 0.9;
+}
+
+/* 主容器 */
+.search-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+/* 搜索结果统计 */
+.result-count {
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 2rem;
+}
+
+.result-count h3 {
+    color: #34495e;
+    font-weight: 500;
+}
+
+/* 职位卡片 */
+.job-list {
+    margin: 2rem 0;
+}
+
+.job-card {
+    background: white;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    display: flex;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    position: relative;
+    border-left: 4px solid #3498db;
+}
+
+.job-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -4px;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, #3498db, #2980b9);
+    border-radius: 8px 0 0 8px;
+}
+
+.job-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* 职位信息 */
+.job-info {
+    flex: 1;
+    padding-right: 2rem;
+}
+
+.job-title {
+    font-size: 1.4rem;
+    color: #2c3e50;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+}
+
+.company-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 1rem 0;
+}
+
+.company-logo {
+    width: 42px;
+    height: 42px;
+    background: #f1f3f5;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: #3498db;
+    font-size: 1.1rem;
+}
+
+.company-name {
+    font-weight: 600;
+    color: #34495e;
+    font-size: 1.05rem;
+}
+
+/* 位置信息 */
+.job-location {
+    margin-top: 1.2rem;
+    color: #7f8c8d;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.job-location i {
+    color: #3498db;
+    font-size: 0.9rem;
+}
+
+/* 薪资区域 */
+.job-actions {
+    min-width: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.salary-box {
+    background: #f8f9fa;
+    padding: 0.8rem 1.2rem;
+    border-radius: 6px;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.salary {
+    color: #e74c3c;
+    font-weight: 700;
+    font-size: 1.1rem;
+    white-space: nowrap;
+}
+
+/* 分页 */
+.pagination {
+    margin: 3rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+}
+
+.page-btn {
+    padding: 0.6rem 1.2rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.page-btn:hover {
+    background: #f8f9fa;
+}
+
+.page-btn.active {
+    background-color: #3498db;
+    color: white;
+    border-color: #3498db;
+}
+
+.page-btn.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.page-btn a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .search-container {
+        padding: 0 1rem;
+    }
+
+    .job-card {
+        flex-direction: column;
+        padding: 1.2rem;
+    }
+
+    .job-actions {
+        margin-top: 1.5rem;
+        align-items: flex-start;
+    }
+
+    .salary-box {
+        padding: 0.6rem 1rem;
+    }
+
+    .company-info {
+        margin: 0.5rem 0;
+    }
+
+    .job-title {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-title {
+        font-size: 1.4rem;
+    }
+
+    .nav-links a {
+        margin-left: 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    .pagination {
+        gap: 0.5rem;
+    }
+
+    .page-btn {
+        padding: 0.5rem 1rem;
+    }
+}

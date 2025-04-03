@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>面试分析报告 - 超级面试官</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/interview_results.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome-free-6.4.0-web/css/all.min.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="{{ url_for('static', filename='js/interview_results.js') }}"></script>
+</head>
+<body>
+<!-- 导航栏 -->
+<nav class="navbar">
+    <div class="nav-title">超级面试官</div>
+    <div>
+        <a href="/interview_question" class="nav-link">重新面试</a>
+        <a href="/" class="nav-link">返回首页</a>
+    </div>
+</nav>
+
+<div class="report-container">
+    <div class="score-card">
+        <div class="score-header">
+            <h2>面试分析报告</h2>
+        </div>
+
+        <!-- 统一分析内容 -->
+        <div class="analysis-card">
+            {{ result|safe }}
+        </div>
+
+        <!-- 操作按钮 -->
+        <div class="action-btns">
+            <button class="btn btn-primary" id="downloadReportBtn">
+                <i class="fas fa-download"></i> 下载完整报告
+            </button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

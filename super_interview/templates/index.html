@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>超级面试官 - 智能招聘平台</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome-free-6.4.0-web/css/all.min.css') }}">
+</head>
+<body>
+<!-- 导航栏 -->
+<nav class="navbar">
+    <div class="nav-title">超级面试官</div>
+    {% if session.user_id %}
+    <div class="dropdown">
+        <span class="nav-span">欢迎:{{ session.user_name }}</span>
+        <div class="dropdown-content">
+            <a href="/logout">退出登录</a>
+        </div>
+    </div>
+    {% else %}
+    <a href="/login" class="nav-login-btn">登录</a>
+    {% endif %}
+</nav>
+<!-- Flash消息容器 -->
+<div class="alert-container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="alert alert-{{ category }}">
+        <span>{{ message }}</span>
+        <button type="button" class="btn-close" onclick="this.parentElement.remove()">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+</div>
+
+<!-- 功能入口 -->
+<section class="hero-section">
+    <h1 class="hero-title">开启智能求职新时代</h1>
+    <div class="quick-access">
+        <a href="/resume_analysis" {% if not session.user_id %}onclick="alert('请先登录'); return false;" {% endif %}>
+            <div class="access-card">
+                <i class="fas fa-file-alt fa-3x"></i>
+                <h3>简历智能分析</h3>
+                <p>AI解析简历竞争力</p>
+            </div>
+        </a>
+
+        <a href="/interview" {% if not session.user_id %}onclick="alert('请先登录'); return false;" {% endif %}>
+            <div class="access-card">
+                <i class="fas fa-comments fa-3x"></i>
+                <h3>AI模拟面试</h3>
+                <p>真实面试场景演练</p>
+            </div>
+        </a>
+
+        <a href="/search_results" {% if not session.user_id %}onclick="alert('请先登录'); return false;" {% endif %}>
+            <div class="access-card">
+                <i class="fas fa-star fa-3x"></i>
+                <h3>搜索结果</h3>
+                <p>查看已搜索到的岗位</p>
+            </div>
+        </a>
+    </div>
+</section>
+
+<!-- 搜索区域 -->
+<form action="/search_results" method="post">
+    <div class="search-container">
+        <div class="search-grid">
+            <!-- 第一行 -->
+            <div class="search-row">
+                <input name="job_name" type="text" class="search-input" placeholder="🔍 岗位名称">
+                <input name="salaryMin" type="number" class="search-input" placeholder="💴 期望薪资">
+                <input name="city" type="text" class="search-input" placeholder="🌆 所在城市">
+            </div>
+
+            <!-- 第二行 -->
+            <div class="search-row">
+                <select class="search-input" name="workExperience">
+                    <option>📅 工作经验</option>
+                    <option value="1">无经验</option>
+                    <option value="2">1年以下</option>
+                    <option value="3">1-3年</option>
+                    <option value="4">3-5年</option>
+                    <option value="5">5年以上</option>
+                </select>
+                <select class="search-input" name="education">
+                    <option>🎓 学历要求</option>
+                    <option value="6">大专</option>
+                    <option value="7">本科</option>
+                    <option value="8">硕士</option>
+                    <option value="11">博士</option>
+                </select>
+            </div>
+
+            <button class="search-button" type="submit" {% if not session.user_id
+                    %}onclick="alert('请先登录'); return false;" {% endif %}>🚀 立即搜索岗位
+            </button>
+        </div>
+    </div>
+</form>
+
+</body>
+</html>
